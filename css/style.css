@@ -6084,3 +6084,15 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   line-height: 1.7; }
+
+.margin-top--medium {
+  margin-top: 5rem; }
+
+.button {
+  color: #07617d;
+  background-color: transparent;
+  font-weight: 600;
+  border: 0.3rem solid #07617d; }
+  .button:hover, .button:active, .button:focus {
+    color: #fff;
+    background-color: #07617d; }
