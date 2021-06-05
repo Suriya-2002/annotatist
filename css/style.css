@@ -6096,3 +6096,19 @@ body {
   .button:hover, .button:active, .button:focus {
     color: #fff;
     background-color: #07617d; }
+
+.footer {
+  background-color: #000;
+  padding: 6rem 2rem 3rem;
+  text-align: center; }
+  .footer__logo {
+    width: 10rem;
+    margin-bottom: 2rem; }
+  .footer__title {
+    color: #fff;
+    margin-bottom: 6rem; }
+  .footer__link, .footer__link:link, .footer__link:visited {
+    color: #888;
+    font-weight: 700; }
+  .footer__link:hover {
+    color: #fff; }

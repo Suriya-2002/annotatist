@@ -1,0 +1,26 @@
+.footer {
+    background-color: $color-black;
+    padding: 6rem 2rem 3rem;
+    text-align: center;
+
+    &__logo {
+        width: 10rem;
+        margin-bottom: 2rem;
+    }
+
+    &__title {
+        color: $color-white;
+        margin-bottom: 6rem;
+    }
+
+    &__link,
+    &__link:link,
+    &__link:visited {
+        color: $color-grey-dark-1;
+        font-weight: 700;
+    }
+
+    &__link:hover {
+        color: $color-white;
+    }
+}
