@@ -5,12 +5,64 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700;800;900&display=swap"
+            rel="stylesheet"
+        />
+
         <link rel="stylesheet" href="./css/style.css" />
+
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.0/pace.min.js"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="./js/vendor.js" defer></script>
 
         <script src="./js/script.js" defer></script>
 
-        <title>Title</title>
+        <title>Annotatist</title>
     </head>
 
-    <body></body>
+    <body>
+        <div id="preloader">
+            <div id="loader"></div>
+        </div>
+
+        <header>
+            <div class="header-logo">
+                <a href="index.html">Annotatist</a>
+            </div>
+        </header>
+
+        <section id="home">
+            <div class="overlay"></div>
+
+            <div class="home-content-table">
+                <div class="home-content-tablecell">
+                    <div class="row">
+                        <div class="col-twelve">
+                            <h3 class="animate-intro">We Are Annotatist.</h3>
+                            <h1 class="animate-intro">
+                                Lorem ipsum dolor <br />
+                                sit amet consectetur.
+                            </h1>
+
+                            <div class="more animate-intro">
+                                <a class="button stroke" href="#">Explore More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scrolldown">
+                <a href="#" class="scroll-icon">Scroll Down</a>
+            </div>
+        </section>
+    </body>
 </html>
