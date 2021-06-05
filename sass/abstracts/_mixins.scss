@@ -1,0 +1,23 @@
+@mixin responsive($break-point) {
+    @if $break-point == mob {
+        @media only screen and (max-width: 600 / 16 * 1em) {
+            @content;
+        }
+    } @else if $break-point == tab-p {
+        @media only screen and (max-width: 900 / 16 * 1em) {
+            @content;
+        }
+    } @else if $break-point == tab-l {
+        @media only screen and (max-width: 1200 / 16 * 1em) {
+            @content;
+        }
+    } @else if $break-point == desk {
+        @media only screen and (max-width: 1750 / 16 * 1em) {
+            @content;
+        }
+    } @else {
+        @media only screen and (max-width: $break-point / 16 * 1em) {
+            @content;
+        }
+    }
+}
