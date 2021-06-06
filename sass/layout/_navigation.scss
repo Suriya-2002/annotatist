@@ -1,0 +1,136 @@
+.navigation {
+    &__lines {
+        background-color: $color-white;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 3;
+        transform: translateY(0);
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            transform: translateY(-0.5rem);
+        }
+
+        &:active,
+        &:focus {
+            transform: translateY(-0.2rem);
+        }
+    }
+
+    &__line {
+        background-color: $color-black;
+        height: 0.3rem;
+        width: 3rem;
+        transform-origin: center;
+        transition: all 0.3s ease-in-out;
+
+        &--2 {
+            margin: 0.5rem 0;
+        }
+    }
+
+    &__menu {
+        background-color: rgba($color-white, 0.8);
+        width: 30vw;
+        height: 100vh;
+        padding: 3rem 2rem;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(20vw);
+        transition: all 0.5s ease-in-out;
+    }
+
+    &__file-list {
+        background-color: $color-white;
+        border-radius: 0.3rem;
+        list-style: none;
+        width: 90%;
+        margin: 2rem 0;
+        flex: 1;
+        align-self: flex-end;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__file-item {
+        color: $color-white;
+        background-color: $color-primary;
+        width: 100%;
+        padding: 1rem 2rem;
+        cursor: default;
+
+        &:hover {
+            background-color: rgba($color-primary, 0.8);
+        }
+    }
+
+    &__file-name {
+        color: $color-white;
+        background-color: $color-primary;
+        width: 90%;
+        height: 5rem;
+        margin: 1rem;
+        padding: 0 1rem;
+        border-radius: 0.3rem;
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        align-self: flex-end;
+    }
+
+    &__file-title {
+        color: $color-white;
+        background-color: $color-primary;
+        padding: 0.5rem 1rem;
+        border-radius: 0.3rem;
+        box-shadow: 0 2rem 4rem rgba($color-black, 0.5);
+        position: absolute;
+        top: -30%;
+        left: -5%;
+    }
+
+    &__file-value {
+        margin: 0;
+    }
+
+    &--active {
+        .navigation__menu {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateX(0);
+        }
+
+        .navigation__line--1 {
+            transform: translateY(0.8rem) rotate(135deg);
+        }
+
+        .navigation__line--2 {
+            opacity: 0;
+        }
+
+        .navigation__line--3 {
+            transform: translateY(-0.8rem) rotate(-135deg);
+        }
+    }
+}

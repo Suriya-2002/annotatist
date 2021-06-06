@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700;800;900&display=swap"
+            rel="stylesheet"
+        />
+
+        <link rel="stylesheet" href="./css/style.css" />
+
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.0/pace.min.js"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="./js/vendor.js" defer></script>
+
+        <script src="./js/script.js" defer></script>
+
+        <title>Annotate</title>
+    </head>
+    <body>
+        <div id="preloader">
+            <div id="loader"></div>
+        </div>
+
+        <nav class="navigation">
+            <div class="navigation__lines">
+                <div class="navigation__line navigation__line--1"></div>
+                <div class="navigation__line navigation__line--2"></div>
+                <div class="navigation__line navigation__line--3"></div>
+            </div>
+
+            <div class="navigation__menu">
+                <h1>Annotatist</h1>
+
+                <div class="coordinates">
+                    <div class="coordinates__box coordinates__box--yolo">
+                        <h4 class="coordinates__title coordinates__title--yolo">Yolo</h4>
+                        <p class="coordinates__value">
+                            (
+                            <span class="coordinates__value--yolo-y-min">--</span>,
+                            <span class="coordinates__value--yolo-x-min">--</span>,
+                            <span class="coordinates__value--yolo-y-max">--</span>,
+                            <span class="coordinates__value--yolo-x-max">--</span>
+                            )
+                        </p>
+                    </div>
+
+                    <div class="coordinates__box coordinates__box--model-b">
+                        <h4 class="coordinates__title coordinates__title--model-b">Model B</h4>
+                        <p class="coordinates__value">
+                            (
+                            <span class="coordinates__value--model-b-y-min">--</span>,
+                            <span class="coordinates__value--model-b-x-min">--</span>,
+                            <span class="coordinates__value--model-b-y-max">--</span>,
+                            <span class="coordinates__value--model-b-x-max">--</span>
+                            )
+                        </p>
+                    </div>
+
+                    <div class="coordinates__box coordinates__box--interpolation">
+                        <h4 class="coordinates__title coordinates__title--interpolation">Interpolation</h4>
+                        <p class="coordinates__value">
+                            (
+                            <span class="coordinates__value--interpolation-y-min">--</span>,
+                            <span class="coordinates__value--interpolation-x-min">--</span>,
+                            <span class="coordinates__value--interpolation-y-max">--</span>,
+                            <span class="coordinates__value--interpolation-x-max">--</span>
+                            )
+                        </p>
+                    </div>
+
+                    <div class="coordinates__box coordinates__box--user">
+                        <h4 class="coordinates__title coordinates__title--user">User</h4>
+                        <p class="coordinates__value">
+                            (
+                            <span class="coordinates__value--user-y-min">--</span>,
+                            <span class="coordinates__value--user-x-min">--</span>,
+                            <span class="coordinates__value--user-y-max">--</span>,
+                            <span class="coordinates__value--user-x-max">--</span>
+                            )
+                        </p>
+                    </div>
+                </div>
+
+                <ul class="navigation__file-list">
+                    <li class="navigation__file-item">File 1</li>
+                </ul>
+
+                <div class="navigation__file-name">
+                    <h4 class="navigation__file-title">File</h4>
+                    <p class="navigation__file-value">Currently active file</p>
+                </div>
+            </div>
+        </nav>
+
+        <main class="annotate">
+            <img src="./assets/images/test.jpg" alt="Annotate Image" class="annotate__image" />
+        </main>
+    </body>
+</html>
