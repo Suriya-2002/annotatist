@@ -6143,6 +6143,26 @@ body {
     text-align: right;
     margin: 0; }
 
+.control-buttons {
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 100vw;
+  height: 10rem;
+  padding: 0 5rem;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 1;
+  pointer-events: all;
+  transition: all 0.5s ease-in-out; }
+  .control-buttons__previous, .control-buttons__reset, .control-buttons__next {
+    margin: 0; }
+  .control-buttons__reset {
+    margin-left: 5rem; }
+  .control-buttons--shrink {
+    width: 70vw; }
+
 .footer {
   background-color: #000;
   padding: 6rem 2rem 3rem;
