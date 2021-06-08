@@ -6119,7 +6119,7 @@ body {
     .coordinates__box--interpolation {
       background-color: #1fab89; }
     .coordinates__box--user {
-      background-color: rgba(0, 0, 0, 0.8); }
+      background-color: #222831; }
   .coordinates__title {
     color: #fff;
     padding: 0.5rem 1rem;
@@ -6142,6 +6142,48 @@ body {
     font-weight: 600;
     text-align: right;
     margin: 0; }
+
+.resizable-box {
+  background: rgba(255, 255, 255, 0.2);
+  width: 10rem;
+  height: 10rem;
+  position: absolute;
+  top: 10rem;
+  left: 10rem;
+  transition: opacity 0.3s ease-in-out; }
+  .resizable-box__resizers-container {
+    width: 100%;
+    height: 100%;
+    border: 0.3rem solid #222831; }
+  .resizable-box__resizer {
+    background-color: #fff;
+    width: 2rem;
+    height: 2rem;
+    border: 0.3rem solid #222831;
+    border-radius: 50%;
+    position: absolute; }
+    .resizable-box__resizer--top-left {
+      left: -1rem;
+      top: -1rem;
+      cursor: nwse-resize; }
+    .resizable-box__resizer--top-right {
+      right: -1rem;
+      top: -1rem;
+      cursor: nesw-resize; }
+    .resizable-box__resizer--bottom-left {
+      left: -1rem;
+      bottom: -1rem;
+      cursor: nesw-resize; }
+    .resizable-box__resizer--bottom-right {
+      right: -1rem;
+      bottom: -1rem;
+      cursor: nwse-resize; }
+  .resizable-box--hidden {
+    opacity: 0;
+    pointer-events: none; }
+
+.annotate {
+  position: relative; }
 
 .control-buttons {
   background-color: rgba(255, 255, 255, 0.8);
