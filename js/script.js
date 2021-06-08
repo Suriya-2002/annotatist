@@ -78,8 +78,8 @@ const drawResizableBox = (yMin, xMin, yMax, xMax) => {
                 }
                 if (height > minimumSize) resizableBox.style.height = height + 'px';
 
-                userCoordinates[1].innerHTML = event.pageY;
-                userCoordinates[2].innerHTML = event.pageX;
+                userCoordinates[1].innerHTML = event.pageX;
+                userCoordinates[2].innerHTML = event.pageY;
             } else if (resizser.classList.contains('resizable-box__resizer--top-right')) {
                 const width = originalWidth + (event.pageX - originalMouseX);
                 const height = originalHeight - (event.pageY - originalMouseY);
