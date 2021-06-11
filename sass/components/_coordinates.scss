@@ -65,4 +65,24 @@
         text-align: right;
         margin: 0;
     }
+
+    &__tooltip {
+        color: $color-white;
+        background-color: rgba($color-black, 0.8);
+        border-radius: 0.3rem;
+        box-shadow: 0 2rem 4rem rgba($color-black, 0.5);
+        padding: 1rem 2rem;
+        position: absolute;
+        top: 20rem;
+        left: 0;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-20rem);
+        transition: all 0.3s ease-in-out;
+    }
+
+    &:hover > &__tooltip {
+        opacity: 1;
+        transform: translateX(-25rem);
+    }
 }

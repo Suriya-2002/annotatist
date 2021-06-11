@@ -6142,6 +6142,22 @@ body {
     font-weight: 600;
     text-align: right;
     margin: 0; }
+  .coordinates__tooltip {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 0.3rem;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.5);
+    padding: 1rem 2rem;
+    position: absolute;
+    top: 20rem;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-20rem);
+    transition: all 0.3s ease-in-out; }
+  .coordinates:hover > .coordinates__tooltip {
+    opacity: 1;
+    transform: translateX(-25rem); }
 
 .resizable-box {
   background: rgba(255, 255, 255, 0.2);
