@@ -6203,7 +6203,7 @@ body {
 
 .control-buttons {
   background-color: rgba(255, 255, 255, 0.8);
-  width: 100vw;
+  width: 100%;
   height: 10rem;
   padding: 0 5rem;
   position: absolute;
@@ -6219,7 +6219,7 @@ body {
   .control-buttons__reset {
     margin-left: 5rem; }
   .control-buttons--shrink {
-    width: 70vw; }
+    width: calc(100% - 30vw); }
 
 .footer {
   background-color: #000;
@@ -6242,7 +6242,7 @@ body {
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   margin: 2rem;

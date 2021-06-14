@@ -1,6 +1,6 @@
 .control-buttons {
     background-color: rgba($color-white, 0.8);
-    width: 100vw;
+    width: 100%;
     height: 10rem;
     padding: 0 5rem;
     position: absolute;
@@ -23,6 +23,6 @@
     }
 
     &--shrink {
-        width: 70vw;
+        width: calc(100% - 30vw);
     }
 }
