@@ -1,5 +1,7 @@
 const { app, BrowserWindow } = require('electron');
 
+const server = require('./app');
+
 let mainWindow;
 
 const createWindow = () => {
@@ -7,7 +9,7 @@ const createWindow = () => {
         webPreferences: { nodeIntegration: true },
     });
 
-    mainWindow.loadFile('index.html');
+    mainWindow.loadURL('http://localhost:2002');
 
     mainWindow.maximize();
     mainWindow.webContents.openDevTools();
