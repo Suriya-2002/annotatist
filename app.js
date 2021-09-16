@@ -7,6 +7,10 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 
+app.get('/annotate', (req, res, next) => {
+    res.render('annotate');
+});
+
 app.use('/', (req, res, next) => {
     res.render('index');
 });
