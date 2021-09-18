@@ -48,6 +48,9 @@ const annotateFormCoordinates = [
     document.querySelector('.annotate-form__xMax'),
 ];
 
+const resetControlButton = document.querySelector('.control-buttons__reset');
+const nextControlButton = document.querySelector('.control-buttons__next');
+
 const updateErrorCoordinates = () => {
     if (
         modelCoordinates.modelB.yMin &&
@@ -277,7 +280,23 @@ coordinatesContainer.addEventListener('click', event => {
     }
 });
 
-document.querySelector('.control-buttons__next').addEventListener('click', () => {
+nextControlButton.addEventListener('click', () => {
     for (i = 0; i < 4; i++) annotateFormCoordinates[i].value = userCoordinates[i].innerHTML;
     annotateForm.submit();
+});
+
+resetControlButton.addEventListener('click', () => {
+    if (
+        resetControlButton.dataset.frameNumber > 0 &&
+        modelCoordinates.modelB.yMin &&
+        modelCoordinates.modelB.xMin &&
+        modelCoordinates.modelB.yMax &&
+        modelCoordinates.modelB.xMax
+    )
+        drawResizableBox(
+            modelCoordinates.modelB.yMin,
+            modelCoordinates.modelB.xMin,
+            modelCoordinates.modelB.yMax,
+            modelCoordinates.modelB.xMax
+        );
 });
