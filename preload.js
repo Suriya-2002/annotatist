@@ -7,7 +7,7 @@ contextBridge.exposeInMainWorld('api', {
     },
 
     receive: (channel, callBack) => {
-        const validChannels = ['filePaths'];
+        const validChannels = ['pathsFile'];
 
         if (validChannels.includes(channel)) {
             ipcRenderer.on(channel, (event, ...args) => callBack(...args));

@@ -1,17 +1,18 @@
 const express = require('express');
 
+const annotateRoutes = require('./routes/annotate');
+
 const app = express();
 
 app.set('views', 'views');
 app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: false }));
 
-app.get('/annotate', (req, res, next) => {
-    res.render('annotate');
-});
+app.use('/annotate', annotateRoutes);
 
-app.use('/', (req, res, next) => {
+app.get('/', (req, res, next) => {
     res.render('index');
 });
 

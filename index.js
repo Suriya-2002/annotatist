@@ -5,14 +5,14 @@ const server = require('./app');
 
 let mainWindow;
 
-const getPathFile = async event => {
+const getPathsFile = async event => {
     try {
         const path = await dialog.showOpenDialog(mainWindow, {
             buttonLabel: 'Select paths file',
             defaultPath: app.getAppPath(),
         });
 
-        mainWindow.webContents.send('filePaths', path.filePaths);
+        mainWindow.webContents.send('pathsFile', path.filePaths);
     } catch (error) {
         console.log(error);
     }
@@ -20,14 +20,17 @@ const getPathFile = async event => {
 
 const createWindow = () => {
     mainWindow = new BrowserWindow({
-        webPreferences: { preload: path.join(app.getAppPath(), 'preload.js') },
+        webPreferences: {
+            preload: path.join(app.getAppPath(), 'preload.js'),
+            nativeWindowOpen: true,
+        },
     });
 
     mainWindow.loadURL('http://localhost:2002');
 
     mainWindow.maximize();
 
-    ipcMain.on('getPathsFile', getPathFile);
+    ipcMain.on('getPathsFile', getPathsFile);
 
     mainWindow.on('closed', () => {
         mainWindow = null;

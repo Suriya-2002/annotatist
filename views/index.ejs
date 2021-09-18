@@ -53,7 +53,7 @@
                             </h1>
 
                             <div class="more animate-intro">
-                                <a class="button stroke" href="#">Explore More</a>
+                                <a class="button stroke" href="#about">Explore More</a>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
             </div>
 
             <div class="scrolldown">
-                <a href="#" class="scroll-icon">Scroll Down</a>
+                <a href="#about" class="scroll-icon">Scroll Down</a>
             </div>
         </section>
 
@@ -76,9 +76,21 @@
                             &mdash; with <span>Annotatist</span>
                         </p>
 
-                        <a href="/annotate" class="button button--annotate animate-this margin-top--medium"
-                            >Annotate Now</a
-                        >
+                        <form class="annotate-form" action="/annotate/open" method="POST">
+                            <input
+                                class="annotate-form__paths-file"
+                                type="hidden"
+                                name="pathsFile"
+                                value=""
+                            />
+
+                            <button
+                                class="button annotate-form__button animate-this margin-top--medium"
+                                type="submit"
+                            >
+                                Annotate Now
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

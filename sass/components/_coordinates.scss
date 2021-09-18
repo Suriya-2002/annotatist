@@ -14,21 +14,40 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
 
         &--yolo {
             background-color: $color-blue;
+
+            &-disable {
+                background-color: rgba($color-blue, 0.6);
+            }
         }
 
         &--model-b {
             background-color: $color-red;
+
+            &-disable {
+                background-color: rgba($color-red, 0.6);
+            }
         }
 
         &--interpolation {
             background-color: $color-green;
+
+            &-disable {
+                background-color: rgba($color-green, 0.6);
+            }
         }
 
         &--user {
             background-color: $color-grey-dark-2;
+        }
+
+        &--error {
+            background-color: $color-white;
+            border: 0.4rem solid $color-red;
         }
     }
 
@@ -56,6 +75,12 @@
         &--user {
             background-color: $color-grey-dark-2;
         }
+
+        &--error {
+            color: $color-black;
+            background-color: $color-white;
+            border: 0.4rem solid $color-red;
+        }
     }
 
     &__value {
@@ -64,6 +89,10 @@
         font-weight: 600;
         text-align: right;
         margin: 0;
+
+        &--error {
+            color: $color-black;
+        }
     }
 
     &__tooltip {

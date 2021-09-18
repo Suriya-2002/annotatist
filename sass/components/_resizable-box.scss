@@ -6,6 +6,7 @@
     top: 10rem;
     left: 10rem;
     transition: opacity 0.3s ease-in-out;
+    z-index: 1;
 
     &__resizers-container {
         width: 100%;
@@ -47,4 +48,29 @@
         opacity: 0;
         pointer-events: none;
     }
+}
+
+.resizable-box-yolo,
+.resizable-box-model-b,
+.resizable-box-interpolation {
+    position: absolute;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+    z-index: 0;
+
+    &--disable {
+        opacity: 0;
+    }
+}
+
+.resizable-box-yolo {
+    border: 0rem solid $color-blue;
+}
+
+.resizable-box-model-b {
+    border: 0rem solid $color-red;
+}
+
+.resizable-box-interpolation {
+    border: 0rem solid $color-green;
 }
