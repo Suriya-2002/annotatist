@@ -14,12 +14,16 @@ module.exports = class Coordinates {
     }
 
     async save(frameNumber, callBack) {
-        const filePath = path.join(dataset.outputFolder, `${frameNumber}.txt`);
-        const data = `${this.objectName} ${this.yMin} ${this.xMin} ${this.yMax} ${this.xMax}`;
+        try {
+            const filePath = path.join(dataset.outputFolder, `${frameNumber}.txt`);
+            const data = `${this.objectName} ${this.yMin} ${this.xMin} ${this.yMax} ${this.xMax}`;
 
-        await fs.promises.writeFile(filePath, data);
+            await fs.promises.writeFile(filePath, data);
 
-        callBack();
+            callBack();
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     static async fetchModelCoordinates(frameNumber, callBack) {
@@ -51,28 +55,32 @@ module.exports = class Coordinates {
             dataset.interpolation.files[frameNumber]
         );
 
-        const yoloData = await fs.promises.readFile(yoloFilePath);
-        const modelBData = await fs.promises.readFile(modelBFilePath);
-        const interpolationData = await fs.promises.readFile(interpolationFilePath);
+        try {
+            const yoloData = await fs.promises.readFile(yoloFilePath);
+            const modelBData = await fs.promises.readFile(modelBFilePath);
+            const interpolationData = await fs.promises.readFile(interpolationFilePath);
 
-        const yoloCoordinates = yoloData.toString().split(' ');
-        modelCoordinates.yolo.yMin = yoloCoordinates[1];
-        modelCoordinates.yolo.xMin = yoloCoordinates[2];
-        modelCoordinates.yolo.yMax = yoloCoordinates[3];
-        modelCoordinates.yolo.xMax = yoloCoordinates[4];
+            const yoloCoordinates = yoloData.toString().split(' ');
+            modelCoordinates.yolo.yMin = yoloCoordinates[1];
+            modelCoordinates.yolo.xMin = yoloCoordinates[2];
+            modelCoordinates.yolo.yMax = yoloCoordinates[3];
+            modelCoordinates.yolo.xMax = yoloCoordinates[4];
 
-        const modelBCoordinates = modelBData.toString().split(' ');
-        modelCoordinates.modelB.yMin = modelBCoordinates[1];
-        modelCoordinates.modelB.xMin = modelBCoordinates[2];
-        modelCoordinates.modelB.yMax = modelBCoordinates[3];
-        modelCoordinates.modelB.xMax = modelBCoordinates[4];
+            const modelBCoordinates = modelBData.toString().split(' ');
+            modelCoordinates.modelB.yMin = modelBCoordinates[1];
+            modelCoordinates.modelB.xMin = modelBCoordinates[2];
+            modelCoordinates.modelB.yMax = modelBCoordinates[3];
+            modelCoordinates.modelB.xMax = modelBCoordinates[4];
 
-        const interpolationCoordinates = interpolationData.toString().split(' ');
-        modelCoordinates.interpolation.yMin = interpolationCoordinates[1];
-        modelCoordinates.interpolation.xMin = interpolationCoordinates[2];
-        modelCoordinates.interpolation.yMax = interpolationCoordinates[3];
-        modelCoordinates.interpolation.xMax = interpolationCoordinates[4];
+            const interpolationCoordinates = interpolationData.toString().split(' ');
+            modelCoordinates.interpolation.yMin = interpolationCoordinates[1];
+            modelCoordinates.interpolation.xMin = interpolationCoordinates[2];
+            modelCoordinates.interpolation.yMax = interpolationCoordinates[3];
+            modelCoordinates.interpolation.xMax = interpolationCoordinates[4];
 
-        callBack(modelCoordinates);
+            callBack(modelCoordinates);
+        } catch (error) {
+            console.log(error);
+        }
     }
 };

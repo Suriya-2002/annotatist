@@ -6343,6 +6343,9 @@ body {
   cursor: default; }
   .navigation__file-item:hover {
     background-color: rgba(7, 97, 125, 0.8); }
+  .navigation__file-item--active {
+    background-color: rgba(7, 97, 125, 0.8);
+    font-weight: 800; }
 
 .navigation__file-name {
   color: #fff;

@@ -153,9 +153,11 @@
                 </div>
 
                 <ul class="navigation__file-list">
-                    <% fileList.forEach(file => { %>
+                    <% fileList.forEach(file => { %> <% if (file === fileList[frameNumber]) { %>
+                    <li class="navigation__file-item navigation__file-item--active"><%= file %></li>
+                    <% } else { %>
                     <li class="navigation__file-item"><%= file %></li>
-                    <% }); %>
+                    <% } %> <% }); %>
                 </ul>
 
                 <div class="navigation__file-name">
@@ -188,7 +190,11 @@
 
             <div class="control-buttons control-buttons--shrink">
                 <div class="control-buttons__group">
-                    <a href="#" class="button control-buttons__previous">&larr; Previous</a>
+                    <a
+                        href="/annotate/<%= Math.max(frameNumber - 1, 0) %>"
+                        class="button control-buttons__previous"
+                        >&larr; Previous</a
+                    >
                     <button class="button control-buttons__reset" data-frame-number="<%= frameNumber %>">
                         Reset
                     </button>
