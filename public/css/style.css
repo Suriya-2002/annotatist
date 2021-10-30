@@ -6252,10 +6252,13 @@ body {
   pointer-events: all;
   transition: all 0.5s ease-in-out;
   z-index: 2; }
-  .control-buttons__previous, .control-buttons__reset, .control-buttons__next {
+  .control-buttons__previous, .control-buttons__reset, .control-buttons__analyse, .control-buttons__next {
     margin: 0; }
   .control-buttons__reset {
     margin-left: 5rem; }
+  .control-buttons__disabled {
+    opacity: 0.7;
+    pointer-events: none; }
   .control-buttons--shrink {
     width: calc(100% - 30vw); }
 

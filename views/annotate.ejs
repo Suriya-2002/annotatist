@@ -128,12 +128,17 @@
                     <div class="coordinates__box coordinates__box--user">
                         <h4 class="coordinates__title coordinates__title--user">User</h4>
                         <p class="coordinates__value">
-                            (
+                            <% if (locals.userCoordinates) { %> (
+                            <span class="coordinates__value--user-y-min"> <%= userCoordinates.yMin%> </span>,
+                            <span class="coordinates__value--user-x-min"> <%= userCoordinates.xMin%> </span>,
+                            <span class="coordinates__value--user-y-max"> <%= userCoordinates.yMax %> </span>,
+                            <span class="coordinates__value--user-x-max"> <%= userCoordinates.xMax %> </span>
+                            ) <% } else { %> (
                             <span class="coordinates__value--user-y-min">--</span>,
                             <span class="coordinates__value--user-x-min">--</span>,
                             <span class="coordinates__value--user-y-max">--</span>,
                             <span class="coordinates__value--user-x-max">--</span>
-                            )
+                            ) <% } %>
                         </p>
                     </div>
 
@@ -168,7 +173,8 @@
         </nav>
 
         <main class="annotate">
-            <div class="resizable-box <% if (frameNumber === 0) { %>resizable-box--hidden<% } %>">
+            <% if (!locals.fileExists && frameNumber === 0) { %>
+            <div class="resizable-box resizable-box--hidden">
                 <div class="resizable-box__resizers-container">
                     <div class="resizable-box__resizer resizable-box__resizer--top-left"></div>
                     <div class="resizable-box__resizer resizable-box__resizer--top-right"></div>
@@ -176,17 +182,22 @@
                     <div class="resizable-box__resizer resizable-box__resizer--bottom-right"></div>
                 </div>
             </div>
+            <% } else { %>
+            <div class="resizable-box">
+                <div class="resizable-box__resizers-container">
+                    <div class="resizable-box__resizer resizable-box__resizer--top-left"></div>
+                    <div class="resizable-box__resizer resizable-box__resizer--top-right"></div>
+                    <div class="resizable-box__resizer resizable-box__resizer--bottom-left"></div>
+                    <div class="resizable-box__resizer resizable-box__resizer--bottom-right"></div>
+                </div>
+            </div>
+            <% } %>
 
             <div class="resizable-box-yolo"></div>
             <div class="resizable-box-model-b"></div>
             <div class="resizable-box-interpolation"></div>
 
-            <img
-                src="<%= imageURL %>"
-                alt="Annotate Image"
-                class="annotate__image"
-                data-frame-number="<%= frameNumber %>"
-            />
+            <img src="<%= imageURL %>" alt="Annotate Image" class="annotate__image" />
 
             <div class="control-buttons control-buttons--shrink">
                 <div class="control-buttons__group">
@@ -195,11 +206,21 @@
                         class="button control-buttons__previous"
                         >&larr; Previous</a
                     >
-                    <button class="button control-buttons__reset" data-frame-number="<%= frameNumber %>">
-                        Reset
-                    </button>
+
+                    <% if (locals.fileExists || frameNumber === 0) { %>
+                    <button class="button control-buttons__reset control-buttons__disabled">Reset</button>
+                    <% } else { %>
+                    <button class="button control-buttons__reset">Reset</button>
+                    <% } %>
                 </div>
+
+                <button class="button control-buttons__analyse">Analyse</button>
+
+                <% if (locals.fileExists) { %>
+                <a href="/annotate/<%= frameNumber + 1 %>" class="button">Next &rarr;</a>
+                <% } else { %>
                 <button class="button control-buttons__next">Next &rarr;</button>
+                <% } %>
             </div>
 
             <form class="annotate-form" action="/annotate/<%= frameNumber + 1 %>" method="POST" hidden>
@@ -208,6 +229,12 @@
                 <input class="annotate-form__yMax" type="hidden" name="yMax" value="0" />
                 <input class="annotate-form__xMax" type="hidden" name="xMax" value="0" />
             </form>
+
+            <span
+                class="data"
+                data-frame-number="<%= frameNumber %>"
+                data-file-exists="<%= locals.fileExists %>"
+            ></span>
         </main>
     </body>
 </html>

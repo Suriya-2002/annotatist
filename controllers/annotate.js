@@ -8,12 +8,28 @@ exports.getAnnotate = (req, res, next) => {
     const imageURL = getImageURL(frameNumber);
     const fileList = getFileList(frameNumber);
 
-    if (frameNumber == 0) res.render('annotate', { imageURL, fileList, frameNumber });
-    else {
-        Coordinates.fetchModelCoordinates(frameNumber, modelCoordinates => {
-            res.render('annotate', { imageURL, fileList, frameNumber, modelCoordinates });
-        });
-    }
+    Coordinates.exists(frameNumber + 1, fileExists => {
+        if (fileExists) {
+            Coordinates.fetchModelCoordinates(frameNumber, modelCoordinates => {
+                Coordinates.fetchUserCoordinates(frameNumber + 1, userCoordinates => {
+                    res.render('annotate', {
+                        imageURL,
+                        fileList,
+                        frameNumber,
+                        modelCoordinates,
+                        userCoordinates,
+                        fileExists,
+                    });
+                });
+            });
+        } else if (frameNumber == 0) {
+            res.render('annotate', { imageURL, fileList, frameNumber });
+        } else {
+            Coordinates.fetchModelCoordinates(frameNumber, modelCoordinates => {
+                res.render('annotate', { imageURL, fileList, frameNumber, modelCoordinates });
+            });
+        }
+    });
 };
 
 exports.postAnnotate = (req, res, next) => {

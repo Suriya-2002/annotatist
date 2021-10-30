@@ -18,7 +18,10 @@ module.exports = class Coordinates {
             const filePath = path.join(dataset.outputFolder, `${frameNumber}.txt`);
             const data = `${this.objectName} ${this.yMin} ${this.xMin} ${this.yMax} ${this.xMax}`;
 
-            await fs.promises.writeFile(filePath, data);
+            fs.access(filePath, async error => {
+                if (!error) return;
+                await fs.promises.writeFile(filePath, data);
+            });
 
             callBack();
         } catch (error) {
@@ -26,36 +29,73 @@ module.exports = class Coordinates {
         }
     }
 
-    static async fetchModelCoordinates(frameNumber, callBack) {
-        const modelCoordinates = {
-            yolo: {
-                yMin: 0,
-                xMin: 0,
-                yMax: 0,
-                xMax: 0,
-            },
-            modelB: {
-                yMin: 0,
-                xMin: 0,
-                yMax: 0,
-                xMax: 0,
-            },
-            interpolation: {
-                yMin: 0,
-                xMin: 0,
-                yMax: 0,
-                xMax: 0,
-            },
-        };
-
-        const yoloFilePath = path.join(dataset.yolo.fullPath, dataset.yolo.files[frameNumber]);
-        const modelBFilePath = path.join(dataset.modelB.fullPath, dataset.modelB.files[frameNumber]);
-        const interpolationFilePath = path.join(
-            dataset.interpolation.fullPath,
-            dataset.interpolation.files[frameNumber]
-        );
-
+    static async exists(frameNumber, callBack) {
         try {
+            const filePath = path.join(dataset.outputFolder, `${frameNumber}.txt`);
+            await fs.promises.access(filePath);
+
+            callBack(true);
+        } catch (error) {
+            console.log(error);
+
+            callBack(false);
+        }
+    }
+
+    static async fetchUserCoordinates(frameNumber, callBack) {
+        try {
+            const userCoordinates = {
+                yMin: 0,
+                xMin: 0,
+                yMax: 0,
+                xMax: 0,
+            };
+
+            const userFilePath = path.join(dataset.outputFolder, `${frameNumber}.txt`);
+            const userData = await fs.promises.readFile(userFilePath);
+
+            const coordinates = userData.toString().split(' ');
+            userCoordinates.yMin = coordinates[1];
+            userCoordinates.xMin = coordinates[2];
+            userCoordinates.yMax = coordinates[3];
+            userCoordinates.xMax = coordinates[4];
+
+            callBack(userCoordinates);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    static async fetchModelCoordinates(frameNumber, callBack) {
+        try {
+            const modelCoordinates = {
+                yolo: {
+                    yMin: 0,
+                    xMin: 0,
+                    yMax: 0,
+                    xMax: 0,
+                },
+                modelB: {
+                    yMin: 0,
+                    xMin: 0,
+                    yMax: 0,
+                    xMax: 0,
+                },
+                interpolation: {
+                    yMin: 0,
+                    xMin: 0,
+                    yMax: 0,
+                    xMax: 0,
+                },
+            };
+
+            const yoloFilePath = path.join(dataset.yolo.fullPath, dataset.yolo.files[frameNumber]);
+            const modelBFilePath = path.join(dataset.modelB.fullPath, dataset.modelB.files[frameNumber]);
+            const interpolationFilePath = path.join(
+                dataset.interpolation.fullPath,
+                dataset.interpolation.files[frameNumber]
+            );
+
             const yoloData = await fs.promises.readFile(yoloFilePath);
             const modelBData = await fs.promises.readFile(modelBFilePath);
             const interpolationData = await fs.promises.readFile(interpolationFilePath);
