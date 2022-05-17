@@ -104,3 +104,4 @@ dist
 .tern-port
 
 dataset/
+/paths.json
